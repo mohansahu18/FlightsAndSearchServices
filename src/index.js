@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-
+const CityRipository = require('./repository/city-repository')
 const { PORT } = require('./config/serverConfig');
 
 const setUPAndStartServer = async () => {
@@ -13,7 +13,9 @@ const setUPAndStartServer = async () => {
 
 
     app.listen(PORT, () => {
-        console.log(`Server is running on port ${PORT} `)
+        console.log(`Server is running on port ${PORT} `);
+        const obj = new CityRipository();
+        obj.createCity({ name: "bhpalk" })
     })
 
 }

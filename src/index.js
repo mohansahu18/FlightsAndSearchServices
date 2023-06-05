@@ -16,7 +16,9 @@ const setUPAndStartServer = async () => {
         console.log(`Server is running on port ${PORT} `);
         const obj = new CityRipository();
         obj.createCity({ name: "bhpalk" })
-    })
+    });
+};
 
-}
+
+
 setUPAndStartServer();

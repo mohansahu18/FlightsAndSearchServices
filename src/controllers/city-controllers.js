@@ -4,7 +4,7 @@ const cityServices = new CityServices();
 
 const create = async (req, res) => {
     try {
-        const city = await CityServices.createCity(req.body)
+        const city = await cityServices.createCity(req.body)
         return res.status(201).json({
             data: city,
             success: true,
@@ -24,7 +24,7 @@ const create = async (req, res) => {
 
 const destory = async (req, res) => {
     try {
-        const response = await CityServices.deleteCity(req.params.id)
+        const response = await cityServices.deleteCity(req.params.id)
         return res.status(200).json({
             data: response,
             success: true,
@@ -44,7 +44,7 @@ const destory = async (req, res) => {
 
 const get = async (req, res) => {
     try {
-        const response = await CityServices.getCity(req.params.id)
+        const response = await cityServices.getCity(req.params.id)
         return res.status(200).json({
             data: response,
             success: true,
@@ -64,7 +64,7 @@ const get = async (req, res) => {
 
 const update = async (req, res) => {
     try {
-        const response = await CityServices.updateCity(req.params.id, req.body)
+        const response = await cityServices.updateCity(req.params.id, req.body)
         return res.status(200).json({
             data: response,
             success: true,
@@ -80,4 +80,8 @@ const update = async (req, res) => {
             err: error
         })
     }
+}
+
+module.exports = {
+    create, destory, get, update
 }

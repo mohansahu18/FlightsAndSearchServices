@@ -1,16 +1,16 @@
-const City = require('../models/index');
+const { city } = require('../models/index');
 
 class CityRipository {
 
     // destructuring the object
     async createCity({ name }) {
         try {
-            const city = await City.create(
+            const City = await city.create(
                 {
                     name: name
                 }
             )
-            return city
+            return City
         } catch (error) {
             console.log("something went wrong in repository layer");
             throw { error }
@@ -19,7 +19,7 @@ class CityRipository {
 
     async deleteCity(cityId) {
         try {
-            await City.destory({
+            await City.destroy({
                 where: {
                     id: cityId
                 }

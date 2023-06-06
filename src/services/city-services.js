@@ -8,6 +8,7 @@ class CityServices {
     async createCity(data) {
         try {
             const city = await this.cityRipository.createCity(data)
+            return city
         } catch (error) {
             console.log("something went wrong in services layer")
             throw { error }
@@ -44,6 +45,7 @@ class CityServices {
             throw { error }
         }
     }
+
 
 }
 module.exports = CityServices

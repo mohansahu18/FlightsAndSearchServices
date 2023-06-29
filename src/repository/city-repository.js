@@ -1,3 +1,4 @@
+const { Op } = require('sequelize')
 const { city } = require('../models/index');
 
 class CityRipository {
@@ -50,8 +51,19 @@ class CityRipository {
         }
     }
 
-    async getAllCities() {
+    async getAllCities(fliter) {//filter can be empty also
+
         try {
+            if (fliter.name) {
+                const City = await city.findAll({
+                    where: {
+                        name: {
+                            [Op.startsWith]: fliter.name
+                        }
+                    }
+                })
+                return City
+            }
             const City = await city.findAll();
             return City;
         } catch (error) {
